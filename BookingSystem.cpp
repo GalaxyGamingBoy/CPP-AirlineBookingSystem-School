@@ -84,12 +84,33 @@ std::vector<Booking> BookingSystem::bookingChangeName(std::vector<Booking> curre
             }
         }
     }else{
+        std::cout << "Seat Not Found" << std::endl;
         return newBookingList;
     }
 }
 
 std::vector<Booking> BookingSystem::bookingChangeSeat(std::vector<Booking> currentBookingList) {
-    // todo
+    int newSeat;
+    int seat;
+    std::vector<Booking> newBookingList = currentBookingList;
+    std::cout << "Enter seat number: ";
+    std::cin >> seat;
+    if(BookingSystem::seatExists(newBookingList, seat)){
+        do{
+            std::cout << "Enter new seat: ";
+            std::cin >> newSeat;
+        }
+        while(BookingSystem::seatExists(currentBookingList, newSeat));
+        for(int i = 0; i < newBookingList.size(); i++){
+            if(newBookingList[i].getBookingSeatNumber() == seat){
+                newBookingList[i].setBookingSeatNumber(newSeat);
+                return newBookingList;
+            }
+        }
+    }else{
+        std::cout << "Seat Not Found" << std::endl;
+        return newBookingList;
+    }
 }
 
 std::vector<Booking> BookingSystem::bookingChangePlan(std::vector<Booking> currentBookingList) {
