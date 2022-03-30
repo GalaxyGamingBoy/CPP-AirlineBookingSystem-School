@@ -69,7 +69,23 @@ Booking BookingSystem::newBooking(std::vector<Booking> currentBookingList) {
 }
 
 std::vector<Booking> BookingSystem::bookingChangeName(std::vector<Booking> currentBookingList) {
-    // todo
+    std::string newName;
+    int seat;
+    std::vector<Booking> newBookingList = currentBookingList;
+    std::cout << "Enter seat number: ";
+    std::cin >> seat;
+    if(BookingSystem::seatExists(newBookingList, seat)){
+        std::cout << "Enter new name: ";
+        std::cin >> newName;
+        for(int i = 0; i < newBookingList.size(); i++){
+            if(newBookingList[i].getBookingSeatNumber() == seat){
+                newBookingList[i].setBookingName(newName);
+                return newBookingList;
+            }
+        }
+    }else{
+        return newBookingList;
+    }
 }
 
 std::vector<Booking> BookingSystem::bookingChangeSeat(std::vector<Booking> currentBookingList) {
