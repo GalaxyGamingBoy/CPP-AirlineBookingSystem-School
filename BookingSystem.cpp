@@ -67,3 +67,15 @@ Booking BookingSystem::newBooking(std::vector<Booking> currentBookingList) {
     return newBooking;
 
 }
+
+std::vector<Booking> BookingSystem::bookingChangeName(std::vector<Booking> currentBookingList) {
+    // todo
+}
+
+std::vector<Booking> BookingSystem::bookingChangeSeat(std::vector<Booking> currentBookingList) {
+    // todo
+}
+
+std::vector<Booking> BookingSystem::bookingChangePlan(std::vector<Booking> currentBookingList) {
+    // todo
+}
