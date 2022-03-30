@@ -115,4 +115,25 @@ std::vector<Booking> BookingSystem::bookingChangeSeat(std::vector<Booking> curre
 
 std::vector<Booking> BookingSystem::bookingChangePlan(std::vector<Booking> currentBookingList) {
     // todo
+    std::string newPlan;
+
+    int seat;
+    std::vector<Booking> newBookingList = currentBookingList;
+    std::cout << "Enter seat number: ";
+    std::cin >> seat;
+    if(BookingSystem::seatExists(newBookingList, seat)){
+        do{
+            std::cout << "AVAILABLE PLANS: \nECONOMY\nECONOMY_PLUS\nBUSINESS\nFIRST_CLASS\nSelected Plan: ";
+            std::cin >> newPlan;
+        }while(!BookingSystem::bookPlanValid(newPlan));
+        for(int i = 0; i < newBookingList.size(); i++){
+            if(newBookingList[i].getBookingSeatNumber() == seat){
+                newBookingList[i].setBookingPlan(BookingSystem::stringToEnum(newPlan));
+                return newBookingList;
+            }
+        }
+    }else{
+        std::cout << "Seat Not Found" << std::endl;
+        return newBookingList;
+    }
 }
