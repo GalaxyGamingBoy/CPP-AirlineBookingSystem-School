@@ -42,6 +42,18 @@ int Terminal::recogniseCommand(std::string cmd) {
         Terminal::allBookings.push_back(bookingSystem.newBooking(Terminal::allBookings));
         return 200;
     }
+    else if(cmd == "changeName"){
+        Terminal::allBookings = bookingSystem.bookingChangeName(Terminal::allBookings);
+        return 200;
+    }
+    else if(cmd == "changeSeat"){
+        Terminal::allBookings = bookingSystem.bookingChangeSeat(Terminal::allBookings);
+        return 200;
+    }
+    else if(cmd == "changePlan"){
+        Terminal::allBookings = bookingSystem.bookingChangePlan(Terminal::allBookings);
+        return 200;
+    }
     else if(cmd == "list"){
         std::cout << "Listing All Bookings:" << std::endl;
         for(Booking booking : Terminal::allBookings){
@@ -59,6 +71,7 @@ int Terminal::recogniseCommand(std::string cmd) {
         }
     }
     else{
+        std::cout << "404 - Command Not Found" << std::endl;
         return 404;
     }
 }

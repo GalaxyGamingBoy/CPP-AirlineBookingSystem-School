@@ -10,10 +10,10 @@
 class Enums {
 public:
     enum BookingPlan{
-        ECONOMY,
-        ECONOMY_PLUS,
-        BUSINESS,
-        FIRST_CLASS
+        ECONOMY = 0,
+        ECONOMY_PLUS = 1,
+        BUSINESS = 2,
+        FIRST_CLASS = 3
     };
 };
 
